@@ -12,6 +12,11 @@
       {{ "Please meet the" | titlecase }}
       {{ worldName | pluralize(worldCount) | uppercase}}
       {{ "AND THANK YOU" | lowercase }}
+
+      <div v-for="o in all">
+        {{ JSON.stringify(o) }}
+      </div>
+
     </div>
     <script src="../vendor/view.min.js"></script>
     <script src="../vendor/store.js"></script>

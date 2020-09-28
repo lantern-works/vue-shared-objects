@@ -2455,7 +2455,7 @@ module.exports = require('./gun.js')
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"timers":7}],3:[function(require,module,exports){
+},{"timers":6}],3:[function(require,module,exports){
 var Gun = (typeof window !== "undefined")? window.Gun : require('../gun');
 
 Gun.chain.open = function(cb, opt, at){
@@ -2516,38 +2516,6 @@ Gun.chain.open = function(cb, opt, at){
 },{"../gun":2}],4:[function(require,module,exports){
 var Gun = (typeof window !== "undefined")? window.Gun : require('../gun');
 
-Gun.chain.path = function(field, opt){
-	var back = this, gun = back, tmp;
-	if(typeof field === 'string'){
-		tmp = field.split(opt || '.');
-		if(1 === tmp.length){
-			gun = back.get(field);
-			return gun;
-		}
-		field = tmp;
-	}
-	if(field instanceof Array){
-		if(field.length > 1){
-			gun = back;
-			var i = 0, l = field.length;
-			for(i; i < l; i++){
-				//gun = gun.get(field[i], (i+1 === l)? cb : null, opt);
-				gun = gun.get(field[i]);
-			}
-		} else {
-			gun = back.get(field[0]);
-		}
-		return gun;
-	}
-	if(!field && 0 != field){
-		return back;
-	}
-	gun = back.get(''+field);
-	return gun;
-}
-},{"../gun":2}],5:[function(require,module,exports){
-var Gun = (typeof window !== "undefined")? window.Gun : require('../gun');
-
 const rel_ = Gun.val.link._;  // '#'
 const node_ = Gun.node._;  // '_'
 
@@ -2557,7 +2525,7 @@ Gun.chain.unset = function(node){
 	return this;
 }
 
-},{"../gun":2}],6:[function(require,module,exports){
+},{"../gun":2}],5:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -2743,7 +2711,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -2822,9 +2790,8 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":6,"timers":7}],8:[function(require,module,exports){
+},{"process/browser.js":5,"timers":6}],7:[function(require,module,exports){
 const Gun = require("gun");
-const GunPath = require("gun/lib/path.js");
 const GunUnset = require("gun/lib/unset.js");
 const GunOpen = require("gun/lib/open.js");
 
@@ -2853,5 +2820,5 @@ module.exports = function Database(Vue, options) {
 
     return Gun(options);
 }
-},{"gun":1,"gun/lib/open.js":3,"gun/lib/path.js":4,"gun/lib/unset.js":5}]},{},[8])(8)
+},{"gun":1,"gun/lib/open.js":3,"gun/lib/unset.js":4}]},{},[7])(7)
 });

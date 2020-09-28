@@ -1,3 +1,7 @@
+
+module.exports.pluralize = require("pluralize");
+module.exports.asyncComputed = require("vue-async-computed");
+
 let quiet = [];
 let silenced = false;
 
@@ -39,5 +43,3 @@ const silence = function(list = [])  {
 
 silence("5min to figure out");
 silence("You are running Vue in development mode");
-
-module.exports.pluralize = require("pluralize");

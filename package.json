@@ -26,6 +26,7 @@
     "dependencies": {
         "gun": "^0.2020.520",
         "minify": "^6.0.0",
-        "pluralize": "^8.0.0"
+        "pluralize": "^8.0.0",
+        "vue-async-computed": "^3.9.0"
     }
 }

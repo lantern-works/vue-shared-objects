@@ -9,5 +9,10 @@ window.app = new Vue({
     data: {
       worldName: "world",
       worldCount: 1
+    },
+    computed: {
+        all() {
+            return [1,2,3]
+        }
     }
 });
