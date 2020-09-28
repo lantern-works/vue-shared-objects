@@ -40,7 +40,4 @@ const silence = function(list = [])  {
 silence("5min to figure out");
 silence("You are running Vue in development mode");
 
-module.exports._ = require("lodash");
 module.exports.pluralize = require("pluralize");
-module.exports.Gun = require("gun");
-module.exports.winston = require("winston");

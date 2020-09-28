@@ -8,10 +8,15 @@
         "husky": "^4.2.3",
         "prettier": "1.19.1",
         "pretty-quick": "^2.0.1",
-        "should": "^13.2.3"
+        "should": "^13.2.3",
+        "uglify-es": "^3.3.9"
     },
     "scripts": {
-        "build": "browserify --standalone VueSharedObjectsVendor -e ./src/vendor.js --outfile ./vendor/all.js;"
+        "build": "npm run compile && npm run minify",
+        "compile": "npm run store && npm run view",
+        "store": "./node_modules/browserify/bin/cmd.js --standalone VSOStore -e ./src/store.js --outfile ./vendor/store.js;",
+        "view": "./node_modules/browserify/bin/cmd.js --standalone VSOView -e ./src/view.js --outfile ./vendor/view.js;",
+        "minify": "./node_modules/uglify-es/bin/uglifyjs vendor/store.js -o vendor/store.min.js; ./node_modules/uglify-es/bin/uglifyjs vendor/view.js -o vendor/view.min.js"
     },
     "husky": {
         "hooks": {
@@ -20,9 +25,7 @@
     },
     "dependencies": {
         "gun": "^0.2020.520",
-        "lodash": "^4.17.20",
-        "pluralize": "^8.0.0",
-        "vue": "^2.6.12",
-        "winston": "^3.3.3"
+        "minify": "^6.0.0",
+        "pluralize": "^8.0.0"
     }
 }

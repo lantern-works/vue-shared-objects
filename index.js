@@ -1,10 +1,16 @@
-import log from './src/log.js';
-import filters from './src/filters.js';
-import mixins from './src/mixins.js';
+import Database from './lib/database.js';
+import filters from './lib/filters.js';
 const VueSharedObjects = {};
 VueSharedObjects.install = function(Vue, options) {
-    log(Vue, VueSharedObjectsVendor, options);
-    filters(Vue, VueSharedObjectsVendor, options);
-    mixins(Vue, VueSharedObjectsVendor, options);
+    filters(Vue, VSOView, options);
+
+    /**
+     * Database Mixin
+     */
+    Vue.mixin({
+        created: function() {
+            this.$database = Database(Vue, options);
+        },
+    });
 };
 export default VueSharedObjects;

@@ -2,3 +2,8 @@ watch:
     - index.js
     - src
     - test
+static:
+  - vendor/store.js
+  - vendor/store.min.js
+  - vendor/view.js
+  - vendor/view.min.js

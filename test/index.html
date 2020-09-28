@@ -5,15 +5,17 @@
       [ v-cloak ] { display: none; }
       body { font-family: monospace; }
     </style>
-    <script src="../vendor/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
+    <div>Test</div>
     <div id="app" v-cloak>
       {{ "Please meet the" | titlecase }}
       {{ worldName | pluralize(worldCount) | uppercase}}
       {{ "AND THANK YOU" | lowercase }}
     </div>
+    <script src="../vendor/view.min.js"></script>
+    <script src="../vendor/store.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="module" src="./test.js"></script>
   </body>
 </html>
