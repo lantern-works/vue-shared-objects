@@ -1,6 +1,7 @@
 watch: 
     - index.js
     - src
+    - lib
     - test
 static:
   - vendor/store.js

@@ -8,8 +8,8 @@ VueSharedObjects.install = function(Vue, options) {
      * Database Mixin
      */
     Vue.mixin({
-        created: function() {
-            this.$database = Database(Vue, options);
+        created: async function() {
+            this.$database = await Database(Vue, options);
         },
     });
 };
