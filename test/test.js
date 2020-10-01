@@ -8,11 +8,14 @@ window.Item = Item;
 
 
 class Fancy extends Item {
-  static TYPE = 'fancy';
   constructor(v) {
     super(v);
   }
 }
+
+Fancy.TYPE = 'fancy';
+
+Item.register(Fancy);
 
 window.app = new Vue({
     el: "#app",
@@ -21,16 +24,34 @@ window.app = new Vue({
       worldCount: 1
     },
     methods: {
+      saveNewItem() {
+        let fancyItem = new Fancy({id: 'random-new-' + Math.random()});
+        this.collection.save(fancyItem);
+      },
+      save(so) {
+        this.collection.save(so);
+      },
+      remove(so) {
+        this.collection.remove(so);
+      },
       print(so) {
         so.log();
       }
     },
-    created() {
+    async created() {
+
+        // basic item
         let basicItem = new Item({id: "test", "hello": "world"});
-        this.collection.save(basicItem);
-        Item.register(Fancy);
+        //this.collection.save(basicItem);
+
+        // fancy item
         let id = "new-fancy";
-        window.fancyItem = new Fancy({id: id});
-        this.collection.save(window.fancyItem);
+        let fancyItem = new Fancy({id: id});
+        //await this.collection.save(fancyItem);
+
+        window.test = {
+          "basic": basicItem,
+          "fancy": fancyItem
+        }
     }
 });

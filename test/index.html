@@ -16,6 +16,10 @@
       div {
         padding: 2rem 0rem;
       }
+
+      .deleted {
+        opacity: 0.25;
+      }
     </style>
   </head>
   <body>
@@ -27,13 +31,15 @@
 
       <div>
         <table>
-          <tr v-for="so in collection.all" @click="print(so)">
-            <td>{{so.constructor.name}}</td>
-            <td>{{so.type}}</td>
-            <td>{{ so }}</td>
+          <tr v-for="so in collection.all"  :class="so.deleted ? 'deleted' : 'active'">
+            <td @click="print(so)">{{so.constructor.name}}</td>
+            <td @click="print(so)">{{so.type}}</td>
+            <td @click="so.deleted ? save(so) : remove(so)">{{ so.value }}</td>
           </tr>
         </table>
       </div>
+
+      <button @click="saveNewItem">New</button>
 
     </div>
     <script src="../vendor/view.min.js"></script>
