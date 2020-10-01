@@ -26,8 +26,8 @@ window.app = new Vue({
       }
     },
     created() {
-        // let basicItem = new Item({id: "test", "hello": "world"});
-        // this.collection.save(basicItem);
+        let basicItem = new Item({id: "test", "hello": "world"});
+        this.collection.save(basicItem);
         Item.register(Fancy);
         let id = "new-fancy";
         window.fancyItem = new Fancy({id: id});
