@@ -3,6 +3,10 @@ import VueSharedObjects from "../index.js"
 Vue.use(VueSharedObjects, {
      peers: ["http://localhost:8080/gun"]
 });
+
+import Item from '../lib/item.js';
+window.Item = Item;
+
 console.log('creating app...')
 window.app = new Vue({
     el: "#app",
@@ -10,9 +14,8 @@ window.app = new Vue({
       worldName: "world",
       worldCount: 1
     },
-    computed: {
-        all() {
-            return [1,2,3]
-        }
+    created() {
+        let item = new Item({id: "test", a: 12345})
+        this.collection.save(item);
     }
 });

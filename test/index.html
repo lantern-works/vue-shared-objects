@@ -13,8 +13,8 @@
       {{ worldName | pluralize(worldCount) | uppercase}}
       {{ "AND THANK YOU" | lowercase }}
 
-      <div v-for="o in all">
-        {{ JSON.stringify(o) }}
+      <div v-for="so in collection.all">
+        {{ so }}
       </div>
 
     </div>

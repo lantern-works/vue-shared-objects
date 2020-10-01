@@ -838,6 +838,7 @@ const silence = function(list = [])  {
 
 silence("5min to figure out");
 silence("You are running Vue in development mode");
+silence("Map functions are experimental,");
 
 },{"pluralize":1,"vue-async-computed":2}]},{},[3])(3)
 });
