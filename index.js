@@ -7,9 +7,7 @@ const VueSharedObjects = {};
 VueSharedObjects.install = function(Vue, options) {
     filters(Vue, VSOView, options);
     Vue.use(VSOView.asyncComputed);
-    Collection.database = new Database(Vue, options);
-
-    console.log("database defined...");
+    Collection.DB = new Database(Vue, options);
     const collection = new Collection(options.collection);
 
     /**
@@ -22,7 +20,7 @@ VueSharedObjects.install = function(Vue, options) {
             }
         },
         async created() {
-            this.$database = Collection.database;
+            this.$database = Collection.DB;
             await this.collection.watch();
         }
     });
