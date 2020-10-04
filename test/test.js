@@ -37,6 +37,7 @@ window.app = new Vue({
         console.log('update',so);
         so.set('title', Math.random());
         console.log(so)
+        this.collection.save(so);
       },
       save(so) {
         this.collection.save(so);
