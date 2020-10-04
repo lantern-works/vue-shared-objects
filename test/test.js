@@ -8,8 +8,13 @@ window.Item = Item;
 
 
 class Fancy extends Item {
+
   constructor(v) {
     super(v);
+  }
+
+  set title(v) {
+    this.set('title',v);
   }
 }
 
@@ -27,6 +32,11 @@ window.app = new Vue({
       saveNewItem() {
         let fancyItem = new Fancy({id: 'random-new-' + Math.random()});
         this.collection.save(fancyItem);
+      },
+      update(so) {
+        console.log('update',so);
+        so.set('title', Math.random());
+        console.log(so)
       },
       save(so) {
         this.collection.save(so);
