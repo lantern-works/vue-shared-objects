@@ -31,10 +31,10 @@
 
       <div>
         <table>
-          <tr v-for="so in collection.all"  :class="so.deleted ? 'deleted' : 'active'">
+          <tr v-for="so in collection.all"  :class="so.isDeleted() ? 'deleted' : 'active'">
             <td @click="print(so)">{{so.constructor.name}}</td>
             <td @click="print(so)">{{so.type}}</td>
-            <td @click="so.deleted ? save(so) : remove(so)">{{ so.value }}</td>
+            <td @click="so.isDeleted() ? save(so) : remove(so)">{{ so.value }}</td>
           </tr>
         </table>
       </div>
