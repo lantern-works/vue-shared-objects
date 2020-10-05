@@ -15,9 +15,16 @@ Array.prototype.remove = function () {
 
 const VueSharedObjects = {};
 VueSharedObjects.install = function(Vue, options) {
+
+      // work within namespace
+      const namespace = options.namespace || "_VSO_";
+      const label = '@'+namespace;
+
+
     filters(Vue, VSOView, options);
     Vue.use(VSOView.asyncComputed);
     Collection.DB = new Database(Vue, options);
+    Collection.ITEMS = Collection.DB.get(namespace);
     const collection = new Collection(options.collection);
 
     /**
@@ -31,7 +38,8 @@ VueSharedObjects.install = function(Vue, options) {
         },
         async created() {
             this.$database = Collection.DB;
-            await this.collection.watch();
+            this.$items = Collection.ITEMS;
+            await this.$data.collection.watch();
         }
     });
 };
