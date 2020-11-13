@@ -1,6 +1,6 @@
 {
     "name": "vue-shared-objects",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository": "http://github.com/lantern-works/vue-shared-objects",
     "license": "AGPL-3.0-only",
     "devDependencies": {
